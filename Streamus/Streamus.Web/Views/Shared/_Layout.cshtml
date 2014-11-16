@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - Streamus</title>
+	@* App Styles *@
+	@Styles.Render("~/Content/css")
+	@Styles.Render("~/Content/kendo")
+
+	@* View Styles *@
+	@RenderSection("styles", required: false)
+	@Styles.Render("~/Content/custom")
+
+	@* Jquery *@
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/modernizr")
+
+	@* JWPlayer *@
+	<script src="http://jwpsrv.com/library/9DAYzm2+EeS3RhLddj37mA.js"></script>
+</head>
+<body>
+	<div class="navbar navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@Html.ActionLink("Streamus", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					@if (User.Identity.IsAuthenticated)
+					{
+						<li>@Html.ActionLink("Playlists", "Index", "Playlists", new { area = "UserData" }, null)</li>
+						<li>@Html.ActionLink("Collections", "Index", "Collections", new { area = "UserData" }, null)</li>
+						<li>@Html.ActionLink("Media Items", "Index", "MediaItems", new { area = "UserData" }, null)</li>
+
+						if (User.IsInRole(AppRoles.Admin))
+						{
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li>@Html.ActionLink("Users", "Index", "Users", new { area = "Administration" }, null)</li>
+									<li>@Html.ActionLink("Playlists", "Index", "Playlists", new { area = "Administration" }, null)</li>
+									<li>@Html.ActionLink("Collections", "Index", "Collections", new { area = "Administration" }, null)</li>
+									<li>@Html.ActionLink("Media Items", "Index", "MediaItems", new { area = "Administration" }, null)</li>
+								</ul>
+							</li>
+						}
+					}
+				</ul>
+				@Html.Partial("_LoginPartial")
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer class="text-center">
+			<p>&copy; @DateTime.Now.Year - Streamus</p>
+		</footer>
+	</div>
+
+	@* App Scripts *@
+	@Scripts.Render("~/bundles/bootstrap")
+	@Scripts.Render("~/bundles/kendo")
+
+	@* View Scripts *@
+	@RenderSection("scripts", required: false)
+</body>
+</html>

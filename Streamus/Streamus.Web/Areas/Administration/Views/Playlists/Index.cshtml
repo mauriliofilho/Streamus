@@ -1,0 +1,8 @@
+﻿@using Streamus.Web.Areas.Administration.ViewModel;
+@{
+	const string ControllerName = GlobalConstants.Playlists;
+    ViewBag.Title = ControllerName;
+}
+
+<h2>@ViewBag.Title</h2>
+@(Html.FullFeaturedGrid<PlaylistViewModel>(ControllerName, m => m.Id))

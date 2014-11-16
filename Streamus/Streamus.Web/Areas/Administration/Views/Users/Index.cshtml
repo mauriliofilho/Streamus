@@ -1,0 +1,8 @@
+﻿@using Streamus.Web.Areas.Administration.ViewModel;
+@{
+    const string ControllerName = "Users";
+    ViewBag.Title = ControllerName;
+}
+
+<h2>@ViewBag.Title</h2>
+@(Html.FullFeaturedGrid<UserViewModel>(ControllerName, m => m.Id))
