@@ -1,19 +1,19 @@
-﻿@model IEnumerable<Streamus.Web.ViewModels.Shared.PlaylistViewModel>
-<h2 class="text-center">Playlists:</h2>
+﻿@model IEnumerable<Streamus.Web.ViewModels.Shared.CollectionViewModel>
+<h2 class="text-center">Collections:</h2>
 @(Html.Kendo().ListView(Model)
-		.Name("playlistsList")
+		.Name("collectionsList")
 		.TagName("div")
-		.ClientTemplateId("playlistsListTemplate")
+		.ClientTemplateId("collectionsListTemplate")
 		.DataSource(dataSource =>
 		{
-			dataSource.Read(read => read.Action("Read", "Playlists"));
+			dataSource.Read(read => read.Action("Read", "Collections"));
 			dataSource.PageSize(4);
 		})
 		.Pageable()
 		.Events(e => e
 			  .DataBound(
 			@<text>
-				function() {					
+				function() {
 					window.attachEvents();
 				}
 			</text>)
@@ -26,12 +26,12 @@
 			  )
 )
 
-<script type="text/x-kendo-tmpl" id="playlistsListTemplate">
+<script type="text/x-kendo-tmpl" id="collectionsListTemplate">
 	<div class="row top10 bottom10">
 		<div class="col-md-10">
 			<div>
 				<label style="padding-left: 20px; max-width: 190px" class="text-overflow">${Name}</label>
-				<a class="btn-playlist-load btn btn-primary btn-sm pull-right" data-id="${Id}">Load</a>
+				<a class="btn-mediaitem-load btn btn-primary btn-sm pull-right" data-id="${Id}">Load</a>
 			</div>
 		</div>
 	</div>

@@ -15,26 +15,32 @@
 	</div>
 </div>
 
+<script>
+	$(function () {
+		window.attachEvents = function () {
+			var $mediaItems = $("#mediaItemsList .btn-mediaitem-load").off();
+			var $playlists = $("#playlistsList .btn-playlist-load").off();
+
+			var $videoContainer = $(".player:first");
+			if ($mediaItems.length) {
+				$mediaItems.click(function () {
+					var videoId = $(this).data("id");
+					$videoContainer.html("");
+					window.youtube.embed($videoContainer, videoId, { width: 800, height: 400 });
+				});
+			}
+		};
+	});
+</script>
+
 <div class="row">
 	<div class="col-md-4">
 		@Html.Action("List", "Playlists")
 	</div>
 	<div class="col-md-4">
+		@Html.Action("List", "Collections")
+	</div>
+	<div class="col-md-4">
 		@Html.Action("List", "MediaItems")
 	</div>
 </div>
-
-@section scripts {
-	<script>
-		$(function () {
-			var $videoContainer = $(".player")
-
-			$(".btn-mediaitem-load").click(function () {
-				var videoId = $(this).data("id");
-				$videoContainer.html("");
-
-				window.youtube.embed($videoContainer, videoId, { width: 800, height: 400 });
-			});
-		});
-	</script>
-}

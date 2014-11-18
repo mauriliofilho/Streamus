@@ -1239,6 +1239,7 @@
     <Content Include="Views\Playlists\_PlaylistsList.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\MediaItems\_MediaItemsList.cshtml" />
+    <Content Include="Views\Collections\_CollectionsList.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
