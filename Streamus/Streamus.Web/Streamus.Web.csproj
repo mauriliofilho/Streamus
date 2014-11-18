@@ -207,16 +207,20 @@
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\Controllers\PlaylistsController.cs" />
     <Compile Include="Areas\Administration\Controllers\BaseAdministrationController.cs" />
-    <Compile Include="Areas\Administration\ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Shared\BaseViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModel\CollectionViewModel.cs" />
-    <Compile Include="Areas\Administration\ViewModel\MediaItemViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModel\UserViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModel\PlaylistViewModel.cs" />
     <Compile Include="Areas\UserData\Controllers\CollectionsController.cs" />
+    <Compile Include="Areas\UserData\Controllers\MediaItemsController.cs" />
     <Compile Include="Areas\UserData\Controllers\PlaylistsController.cs" />
     <Compile Include="Areas\UserData\UserDataAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CollectionsController.cs" />
+    <Compile Include="Controllers\PlaylistsController.cs" />
+    <Compile Include="Controllers\MediaItemsController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -257,6 +261,7 @@
     <Compile Include="ViewModels\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchIndexViewModel.cs" />
     <Compile Include="ViewModels\Search\SearchViewModel.cs" />
     <Compile Include="ViewModels\Shared\MediaItemViewModel.cs" />
   </ItemGroup>
@@ -551,6 +556,11 @@
     <Content Include="Areas\UserData\Views\Collections\Details.cshtml" />
     <Content Include="Areas\UserData\Views\Collections\Edit.cshtml" />
     <Content Include="Areas\UserData\Views\Collections\Index.cshtml" />
+    <Content Include="Areas\UserData\Views\MediaItems\Create.cshtml" />
+    <Content Include="Areas\UserData\Views\MediaItems\Delete.cshtml" />
+    <Content Include="Areas\UserData\Views\MediaItems\Details.cshtml" />
+    <Content Include="Areas\UserData\Views\MediaItems\Edit.cshtml" />
+    <Content Include="Areas\UserData\Views\MediaItems\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1219,8 +1229,13 @@
     <Content Include="Views\Shared\DisplayTemplates\MediaItemViewModel.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\_PageableSearchResult.cshtml" />
+    <Content Include="Views\Collections\_Add.cshtml" />
+    <Content Include="Views\MediaItems\_Add.cshtml" />
+    <Content Include="Views\Playlists\_Add.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="InputModels\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

@@ -2,8 +2,8 @@
 {
 	using Streamus.Data.Models;
 	using Streamus.Web.Infrastructure.Mapping;
+	using Streamus.Web.ViewModels.Shared;
 	using System.ComponentModel.DataAnnotations;
-	using System.Web.Mvc;
 
 	public class UserViewModel : BaseViewModel, IMapFrom<User>
 	{

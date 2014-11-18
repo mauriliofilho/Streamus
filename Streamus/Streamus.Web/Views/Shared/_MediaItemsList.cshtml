@@ -46,5 +46,42 @@
 		};
 
 		$(".listen").click(embedPlayer);
+
+		$(".add-playlist, .add-collection, .add-mediaitem").click(function () {
+			var $this = $(this);
+
+			var isPlaylistAdd = $this.hasClass("add-playlist");
+			var isCollectionAdd = $this.hasClass("add-collection");
+			var isMediaItemAdd = $this.hasClass("add-mediaitem");
+
+			var title = "";
+			var contentUrl = "";
+			if (isPlaylistAdd) {
+				title = "Add video to playlist";
+				contentUrl = "/Playlists/Add";
+			}
+			else if (isCollectionAdd) {
+				title = "Add video to collection";
+				contentUrl = "/Collections/Add";
+			}
+			else if (isMediaItemAdd) {
+				title = "Add video to media items";
+				contentUrl = "/MediaItems/Add";
+			}
+
+			var $window = $("<div id='add-form'>");
+			$(document.body).append($window);
+
+			$window.kendoWindow({
+				width: "615px",
+				title: title,
+				content: contentUrl,
+				modal: true,
+				visible: false,
+				close: function () {
+					this.destroy();
+				}
+			}).data("kendoWindow").center().open();;
+		});
 	});
 </script>

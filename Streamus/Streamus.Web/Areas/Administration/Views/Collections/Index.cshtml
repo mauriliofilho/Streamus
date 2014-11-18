@@ -2,7 +2,17 @@
 @{
 	const string ControllerName = GlobalConstants.Collections;
     ViewBag.Title = ControllerName;
+
+	Action<Kendo.Mvc.UI.Fluent.GridColumnFactory<CollectionViewModel>> columns = cols =>
+	{
+		cols.Bound(item => item.Id).Hidden();
+		cols.Bound(item => item.Name);
+		cols.Command(c =>{
+			c.Edit();
+			c.Destroy();
+		}).Title("Commands");
+	};
 }
 
 <h2>@ViewBag.Title</h2>
-@(Html.FullFeaturedGrid<CollectionViewModel>(ControllerName, m => m.Id))
+@(Html.FullFeaturedGrid<CollectionViewModel>(ControllerName, m => m.Id, columns))

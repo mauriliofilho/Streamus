@@ -34,13 +34,13 @@
 							</div>
 							<div class="col-md-6">
 								<div class="row top15">
-									@Html.ActionLink("Add to playlist", "Add", "Playlists", new { area = "UserData" }, new { @class = "btn btn-success btn-sm" })
+									@Html.ActionLink("Add to playlist", "Add", "Playlists", new { area = "UserData" }, new { onclick = "javascript:return false;", @class = "add-playlist btn btn-success btn-sm" })
 								</div>
 								<div class="row top15">
-									@Html.ActionLink("Add to collection", "Add", "Collections", new { area = "UserData" }, new { @class = "btn btn-success btn-sm" })
+									@Html.ActionLink("Add to collection", "Add", "Collections", new { area = "UserData" }, new { onclick = "javascript:return false;", @class = "add-collection btn btn-success btn-sm" })
 								</div>
 								<div class="row top15">
-									@Html.ActionLink("Add to media items", "Add", "MediaItems", new { area = "UserData" }, new { @class = "btn btn-success btn-sm" })
+									@Html.ActionLink("Add to media items", "Add", "MediaItems", new { area = "UserData" }, new { onclick = "javascript:return false;", @class = "add-mediaitem btn btn-success btn-sm" })
 								</div>
 							</div>
 						</div>

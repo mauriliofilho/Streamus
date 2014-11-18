@@ -1,8 +1,23 @@
-﻿@using Streamus.Web.Areas.Administration.ViewModel;
+﻿@using Streamus.Web.ViewModels.Shared;
 @{
 	const string ControllerName = GlobalConstants.MediaItems;
-    ViewBag.Title = ControllerName;
-}
+	ViewBag.Title = ControllerName;
 
+	Action<Kendo.Mvc.UI.Fluent.GridColumnFactory<MediaItemViewModel>> columns = cols =>
+	{
+		cols.Bound(item => item.Id).Hidden();
+		cols.Bound(item => item.VideoId);
+		cols.Bound(item => item.Title);
+		cols.Bound(item => item.Duration);
+		cols.Bound(item => item.LQImageUrl);
+		cols.Bound(item => item.MQImageUrl);
+		cols.Bound(item => item.HQImageUrl);
+		cols.Command(c =>
+		{
+			c.Edit();
+			c.Destroy();
+		}).Title("Commands");
+	};
+}
 <h2>@ViewBag.Title</h2>
-@(Html.FullFeaturedGrid<MediaItemViewModel>(ControllerName, m => m.Id))
+@(Html.FullFeaturedGrid<MediaItemViewModel>(ControllerName, m => m.Id, columns))

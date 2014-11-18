@@ -2,7 +2,18 @@
 @{
 	const string ControllerName = GlobalConstants.Playlists;
     ViewBag.Title = ControllerName;
+
+	Action<Kendo.Mvc.UI.Fluent.GridColumnFactory<PlaylistViewModel>> columns = cols =>
+	{
+		cols.Bound(item => item.Id).Hidden();
+		cols.Bound(item => item.Name);
+		cols.Command(c =>
+		{
+			c.Edit();
+			c.Destroy();
+		}).Title("Commands");
+	};
 }
 
 <h2>@ViewBag.Title</h2>
-@(Html.FullFeaturedGrid<PlaylistViewModel>(ControllerName, m => m.Id))
+@(Html.FullFeaturedGrid<PlaylistViewModel>(ControllerName, m => m.Id, columns))

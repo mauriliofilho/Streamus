@@ -2,7 +2,7 @@
 {
 	using Streamus.Data;
 	using Model = Streamus.Data.Models.MediaItem;
-	using ViewModel = Streamus.Web.Areas.Administration.ViewModel.MediaItemViewModel;
+	using ViewModel = Streamus.Web.ViewModels.Shared.MediaItemViewModel;
 
 	public class MediaItemsController : BaseAdministrationController<Model, ViewModel>
 	{

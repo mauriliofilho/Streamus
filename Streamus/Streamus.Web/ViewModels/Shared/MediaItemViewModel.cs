@@ -1,24 +1,37 @@
 ﻿using Streamus.Data.Models;
 using Streamus.Web.Infrastructure.Mapping;
+using System.ComponentModel.DataAnnotations;
 
 namespace Streamus.Web.ViewModels.Shared
 {
-	public class MediaItemViewModel : IMapFrom<Google.YouTube.Video>, IMapFrom<MediaItem>, IHaveCustomMappings
+	public class MediaItemViewModel : BaseViewModel, IMapFrom<Google.YouTube.Video>, IMapFrom<MediaItem>, IHaveCustomMappings
 	{
 		private const string YOUTUBE_LINK = "http://www.youtube.com/watch?v=";
 
+		[Required]
+		[UIHint("String")]
 		public string VideoId { get; set; }
 
+		[Required]
+		[UIHint("String")]
 		public string Title { get; set; }
 
+		[Required]
 		public long Duration { get; set; }
 
+		[Required]
+		[UIHint("String")]
 		public string LQImageUrl { get; set; }
 
+		[Required]
+		[UIHint("String")]
 		public string MQImageUrl { get; set; }
 
+		[Required]
+		[UIHint("String")]
 		public string HQImageUrl { get; set; }
 
+		[UIHint("String")]
 		public string VideoUrl
 		{
 			get

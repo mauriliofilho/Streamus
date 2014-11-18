@@ -26,6 +26,7 @@
 			// query.SafeSearch could also be set to YouTubeQuery.SafeSearchValues.Moderate
 			youtubeQuery.Query = query;
 			youtubeQuery.SafeSearch = YouTubeQuery.SafeSearchValues.None;
+			youtubeQuery.NumberToRetrieve = 20;
 
 			return this.Request.Get<Video>(youtubeQuery)
 				.Entries

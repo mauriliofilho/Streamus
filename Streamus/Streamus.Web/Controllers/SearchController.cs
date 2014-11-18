@@ -16,22 +16,26 @@
 			this.services = services;
 		}
 
+		[HttpGet]
 		public ActionResult Index(string query = "", int page = 0)
 		{
-			ViewBag.QueryString = query;
-			ViewBag.Page = page;
+			var model = new SearchIndexViewModel()
+			{
+				Query = query,
+				Page = page
+			};
 
-			return View();
+			return View(model);
 		}
 
-		[ChildActionOnly]
+		[HttpGet]
 		[OutputCache(Duration = 1, VaryByParam = "query, page")]
 		public ActionResult Search(string query = "", int page = 0)
 		{
 			const int pageSize = 4;
 
 			var data = this.services.Search(query);
-			var pagesCount = (data.Count() / pageSize) + 1;
+			var pagesCount = (data.Count() / pageSize);
 
 			var items = data
 				.Skip(page * pageSize)

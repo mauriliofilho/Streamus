@@ -8,111 +8,111 @@ using System.Web.Mvc;
 
 namespace Streamus.Web.Areas.UserData.Controllers
 {
-	public class PlaylistsController : BaseController
+	public class MediaItemsController : BaseController
 	{
-		public PlaylistsController(IStreamusData data)
+		public MediaItemsController(IStreamusData data)
 			: base(data)
 		{
 		}
 
-		// GET: UserData/Playlists
+		// GET: UserData/MediaItems
 		public ActionResult Index()
 		{
-			return View(Data.Playlists.All().ToList());
+			return View(this.Data.MediaItems.All().ToList());
 		}
 
-		// GET: UserData/Playlists/Details/5
+		// GET: UserData/MediaItems/Details/5
 		public ActionResult Details(string id)
 		{
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			Playlist playlist = Data.Playlists.Find(id);
-			if (playlist == null)
+			MediaItem mediaItem = this.Data.MediaItems.Find(id);
+			if (mediaItem == null)
 			{
 				return HttpNotFound();
 			}
-			return View(playlist);
+			return View(mediaItem);
 		}
 
-		// GET: UserData/Playlists/Create
+		// GET: UserData/MediaItems/Create
 		public ActionResult Create()
 		{
 			return View();
 		}
 
-		// POST: UserData/Playlists/Create
+		// POST: UserData/MediaItems/Create
 		// To protect from overposting attacks, please enable the specific properties you want to bind to, for
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "Name")] Playlist playlist)
+		public ActionResult Create([Bind(Include = "VideoId,Title,Duration,LQImageUrl,MQImageUrl,HQImageUrl")] MediaItem mediaItem)
 		{
 			if (ModelState.IsValid)
 			{
-				Data.Playlists.Add(playlist);
-				Data.SaveChanges();
+				this.Data.MediaItems.Add(mediaItem);
+				this.Data.SaveChanges();
 				return RedirectToAction("Index");
 			}
 
-			return View(playlist);
+			return View(mediaItem);
 		}
 
-		// GET: UserData/Playlists/Edit/5
+		// GET: UserData/MediaItems/Edit/5
 		public ActionResult Edit(string id)
 		{
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			Playlist playlist = Data.Playlists.Find(id);
-			if (playlist == null)
+			MediaItem mediaItem = this.Data.MediaItems.Find(id);
+			if (mediaItem == null)
 			{
 				return HttpNotFound();
 			}
-			return View(playlist);
+			return View(mediaItem);
 		}
 
-		// POST: UserData/Playlists/Edit/5
+		// POST: UserData/MediaItems/Edit/5
 		// To protect from overposting attacks, please enable the specific properties you want to bind to, for
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit([Bind(Include = "Id,Name")] Playlist playlist)
+		public ActionResult Edit([Bind(Include = "Id,VideoId,Title,Duration,LQImageUrl,MQImageUrl,HQImageUrl")] MediaItem mediaItem)
 		{
 			if (ModelState.IsValid)
 			{
-				Data.Context.Entry(playlist).State = EntityState.Modified;
-				Data.SaveChanges();
+				this.Data.Context.Entry(mediaItem).State = EntityState.Modified;
+				this.Data.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			return View(playlist);
+			return View(mediaItem);
 		}
 
-		// GET: UserData/Playlists/Delete/5
+		// GET: UserData/MediaItems/Delete/5
 		public ActionResult Delete(string id)
 		{
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			Playlist playlist = Data.Playlists.Find(id);
-			if (playlist == null)
+			MediaItem mediaItem = this.Data.MediaItems.Find(id);
+			if (mediaItem == null)
 			{
 				return HttpNotFound();
 			}
-			return View(playlist);
+			return View(mediaItem);
 		}
 
-		// POST: UserData/Playlists/Delete/5
+		// POST: UserData/MediaItems/Delete/5
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(string id)
 		{
-			Playlist playlist = Data.Playlists.Find(id);
-			Data.Playlists.Delete(playlist);
-			Data.SaveChanges();
+			MediaItem mediaItem = this.Data.MediaItems.Find(id);
+			this.Data.MediaItems.Delete(mediaItem);
+			this.Data.SaveChanges();
 			return RedirectToAction("Index");
 		}
 
@@ -120,7 +120,7 @@ namespace Streamus.Web.Areas.UserData.Controllers
 		{
 			if (disposing)
 			{
-				Data.Dispose();
+				this.Data.Dispose();
 			}
 			base.Dispose(disposing);
 		}

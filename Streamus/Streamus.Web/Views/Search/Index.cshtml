@@ -1,10 +1,64 @@
-﻿@model Streamus.Web.ViewModels.Search.SearchViewModel
+﻿@model Streamus.Web.ViewModels.Search.SearchIndexViewModel
 
 @{
 	ViewBag.Title = "Search Page";
-
-	string query = (string)ViewBag.QueryString;
-	int page = (int)ViewBag.Page;
 }
 
-@Html.Action("Search", new { query = query, page = page })
+<div class="row top30">
+	<div class="col-md-12">
+		<div class="form-group">
+			@Html.TextBox("Query", "", new { @class = "search-query form-control", placeholder = "Search Text" })
+		</div>
+		<div class="form-group">
+			@Html.ActionLink("Search", "Search", "Search", null, new { @class = "search btn btn-success" })
+		</div>
+	</div>
+</div>
+<div class="row top30">
+	<div class="col-md-12">
+		@Html.Action("Search", new { query = Model.Query, page = Model.Page })
+	</div>
+</div>
+
+@section scripts {
+	<script>
+		$(function () {
+			var onClick = function () {
+				var $this = $(this);
+				var query = $(".search-query").val();
+				var page = @Model.Page;
+
+				if($this.hasClass("prev-page")){
+					page--;
+				}
+				else if($this.hasClass("next-page")) {
+					page++;
+				}
+				else if ($this.hasClass("btn-page")){
+					page = $this.data("page");
+				}
+
+				$.ajax({
+					url: this.href,
+					type: 'GET',
+					data: { query: query, page: page },
+					cache: false,
+					success: function (result) {
+						$('#PageableSearchResult').replaceWith(result);
+						$(".search, .btn-page").click(onClick);
+					}
+				});
+
+				return false;
+			};
+
+			$(".search, .btn-page").click(onClick);
+
+			$(".search-query").keypress(function(e) {
+				if(e.which == 13) {
+					onClick.call($(".search")[0]);
+				}
+			});
+		});
+	</script>
+}

@@ -7,8 +7,8 @@
 	using Streamus.Common;
 	using Streamus.Data;
 	using Streamus.Data.Models;
-	using Streamus.Web.Areas.Administration.ViewModel;
 	using Streamus.Web.Controllers;
+	using Streamus.Web.ViewModels.Shared;
 	using System;
 	using System.Collections;
 	using System.Data.Entity;

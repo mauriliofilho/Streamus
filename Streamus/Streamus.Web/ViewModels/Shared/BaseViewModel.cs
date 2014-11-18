@@ -1,4 +1,4 @@
-﻿namespace Streamus.Web.Areas.Administration.ViewModel
+﻿namespace Streamus.Web.ViewModels.Shared
 {
 	using System.Web.Mvc;
 

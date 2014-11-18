@@ -15,8 +15,11 @@
 				columns = cols =>
 					{
 						cols.AutoGenerate(true);
-						cols.Command(c => c.Edit());
-						cols.Command(c => c.Destroy());
+						cols.Command(c =>
+						{
+							c.Edit();
+							c.Destroy();
+						}).Title("Commands");
 					};
 			}
 

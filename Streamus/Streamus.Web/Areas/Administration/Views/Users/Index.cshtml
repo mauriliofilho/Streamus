@@ -1,8 +1,19 @@
 ﻿@using Streamus.Web.Areas.Administration.ViewModel;
 @{
-    const string ControllerName = "Users";
-    ViewBag.Title = ControllerName;
-}
+	const string ControllerName = "Users";
+	ViewBag.Title = ControllerName;
 
+	Action<Kendo.Mvc.UI.Fluent.GridColumnFactory<UserViewModel>> columns = cols =>
+	{
+		cols.Bound(item => item.Id).Hidden();
+		cols.Bound(item => item.UserName);
+		cols.Bound(item => item.Email);
+		cols.Command(c =>
+		{
+			c.Edit();
+			c.Destroy();
+		}).Title("Commands");
+	};
+}
 <h2>@ViewBag.Title</h2>
-@(Html.FullFeaturedGrid<UserViewModel>(ControllerName, m => m.Id))
+@(Html.FullFeaturedGrid<UserViewModel>(ControllerName, m => m.Id, columns))

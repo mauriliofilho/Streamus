@@ -17,7 +17,8 @@ namespace Streamus.Web.Areas.UserData
             context.MapRoute(
                 "UserData_default",
                 "UserData/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+				namespaces: new[] { "Streamus.Web.Areas.UserData.Controllers" }
             );
         }
     }

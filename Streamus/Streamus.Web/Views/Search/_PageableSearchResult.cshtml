@@ -1,18 +1,24 @@
 ﻿@model Streamus.Web.ViewModels.Search.SearchViewModel
 
-@Html.Partial("_MediaItemsList", Model.Items)
-<div class="row">
-	<div class="col-md-12">
-		<ul class="pagination">
-			@{
-				var disabledAttrs = new { onclick = "javascript:return false;", style = "color: gray;" };
-			}
-			<li>@Html.ActionLink("«", "Index", "Search", new { page = Model.CurrentPage - 1 }, Model.IsFirstPage ? disabledAttrs : null)</li>
-			@for (var pageIndex = 0; pageIndex < Model.PagesCount; pageIndex++)
-			{
-				<li>@Html.ActionLink((pageIndex + 1).ToString(), "Index", "PageableFeedbackList", new { page = pageIndex }, null)</li>
-			}
-			<li>@Html.ActionLink("»", "Index", "Search", new { page = Model.CurrentPage + 1 }, Model.IsLastPage ? disabledAttrs : null)</li>
-		</ul>
+<div id="PageableSearchResult">
+	@Html.Partial("_MediaItemsList", Model.Items)
+
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="pagination">
+				@{
+					var disabledAttrs = new { onclick = "javascript:return false;", style = "color: gray;", @class = "btn btn-lg btn-default" };
+					var prevPageAttrs = Model.IsFirstPage ? (object)disabledAttrs : new { @class = "prev-page btn btn-lg btn-primary" };
+					var nextPageAttrs = Model.IsLastPage ? (object)disabledAttrs : new { @class = "next-page btn btn-lg btn-primary" };
+
+				}
+				<li>@Html.ActionLink("«", "Search", "Search", null, prevPageAttrs)</li>
+				@for (var pageIndex = 0; pageIndex < Model.PagesCount; pageIndex++)
+				{
+					<li>@Html.ActionLink((pageIndex + 1).ToString(), "Search", "Search", null, new { onclick = "javascript:return false;", @class = "btn btn-lg btn-page", data_page = pageIndex })</li>
+				}
+				<li>@Html.ActionLink("»", "Search", "Search", null, nextPageAttrs)</li>
+			</ul>
+		</div>
 	</div>
 </div>
