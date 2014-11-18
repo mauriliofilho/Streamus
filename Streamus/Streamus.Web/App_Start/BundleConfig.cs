@@ -38,7 +38,8 @@
 						"~/Scripts/kendo/kendo.aspnetmvc.min.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-						"~/Scripts/kendo/jquery.min.js"));
+						"~/Scripts/kendo/jquery.min.js",
+						"~/Scripts/youtube.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jqueryajax").Include(
 						"~/Scripts/jquery.unobtrusive-ajax.js"));

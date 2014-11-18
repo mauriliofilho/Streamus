@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Streamus.Web.ViewModels.Shared.MediaItemViewModel>
+<h2 class="text-center">MediaItems:</h2>
+@(Html.Kendo().ListView(Model)
+		.Name("mediaItemsList")
+		.TagName("div")
+		.ClientTemplateId("mediaItemsListTemplate")
+		.DataSource(dataSource =>
+		{
+			dataSource.Read(read => read.Action("Read", "MediaItems"));
+			dataSource.PageSize(4);
+		})
+		.Pageable()
+		.Events(e => e
+			  .DataBound(
+			@<text>
+				function() {
+				//Handle the dataBound event inline
+				}
+			</text>)
+              .Change(
+			@<text>
+				function() {
+				//Handle the change event inline
+				}
+			</text>)
+			  )
+)
+
+<script type="text/x-kendo-tmpl" id="mediaItemsListTemplate">
+	<div class="row top10 bottom10">
+		<div class="col-md-10">
+			<div>
+				<label style="padding-left: 20px; max-width: 190px" class="text-overflow">${Title}</label>
+				<a class="btn-mediaitem-load btn btn-primary btn-sm pull-right" data-id="${VideoId}">Load</a>
+			</div>
+		</div>
+	</div>
+</script>

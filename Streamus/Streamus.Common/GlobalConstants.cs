@@ -11,6 +11,6 @@
 	{
 		public const string Playlists = "Playlists";
 		public const string Collections = "Collections";
-		public const string MediaItems = "Media Items";
+		public const string MediaItems = "MediaItems";
 	}
 }

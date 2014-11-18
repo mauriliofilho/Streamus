@@ -207,10 +207,12 @@
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\Controllers\PlaylistsController.cs" />
     <Compile Include="Areas\Administration\Controllers\BaseAdministrationController.cs" />
+    <Compile Include="InputModels\AddToCollectionInputModel.cs" />
+    <Compile Include="InputModels\AddToPlaylistInputModel.cs" />
     <Compile Include="ViewModels\Shared\BaseViewModel.cs" />
-    <Compile Include="Areas\Administration\ViewModel\CollectionViewModel.cs" />
+    <Compile Include="ViewModels\Shared\CollectionViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModel\UserViewModel.cs" />
-    <Compile Include="Areas\Administration\ViewModel\PlaylistViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PlaylistViewModel.cs" />
     <Compile Include="Areas\UserData\Controllers\CollectionsController.cs" />
     <Compile Include="Areas\UserData\Controllers\MediaItemsController.cs" />
     <Compile Include="Areas\UserData\Controllers\PlaylistsController.cs" />
@@ -1065,6 +1067,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\youtube.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1232,10 +1235,12 @@
     <Content Include="Views\Collections\_Add.cshtml" />
     <Content Include="Views\MediaItems\_Add.cshtml" />
     <Content Include="Views\Playlists\_Add.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ImageUrl.cshtml" />
+    <Content Include="Views\Playlists\_PlaylistsList.cshtml" />
+    <Content Include="Views\Player\Index.cshtml" />
+    <Content Include="Views\MediaItems\_MediaItemsList.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InputModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

@@ -1,1 +1,49 @@
-﻿<h1 class="text-center">Collection Add</h1>
+﻿@model Streamus.Web.InputModels.AddToCollectionInputModel
+
+<div class="text-overflow">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel">
+				<div class="panel-heading">
+					<h5>Choose Collection</h5>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="CollectionId">Collection:</label>
+								@Html.DropDownListFor(model => model.CollectionId, Model.CollectionOptions, new { @class = "itemid form-control" })
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							@Html.ActionLink("Add video to playlist", "AddVideo", "Collection", null, new { @class = "item-add btn btn-success" })
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel">
+				<div class="panel-heading">
+					<h5>Create New</h5>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="NewCollectionName">Create new:</label>
+								@Html.EditorFor(model => model.NewCollectionName, new { @class = "form-control" })
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							@Html.ActionLink("Create Collection and add video", "CreateAndAdd", "Collection", null, new { @class = "create-add btn btn-primary" })
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

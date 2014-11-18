@@ -24,9 +24,6 @@ namespace Streamus.Data.Models
 		public long Duration { get; set; }
 
 		[Required]
-		public string LQImageUrl { get; set; }
-
-		[Required]
 		public string MQImageUrl { get; set; }
 
 		[Required]

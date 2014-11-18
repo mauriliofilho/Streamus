@@ -6,5 +6,6 @@
 	public interface ISearchServices
 	{
 		IEnumerable<MediaItemViewModel> Search(string query);
+		MediaItemViewModel Get(string videoId);
 	}
 }

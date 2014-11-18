@@ -2,7 +2,7 @@
 {
 	using Streamus.Data;
 	using Model = Streamus.Data.Models.Playlist;
-	using ViewModel = Streamus.Web.Areas.Administration.ViewModel.PlaylistViewModel;
+	using ViewModel = Streamus.Web.ViewModels.Shared.PlaylistViewModel;
 
 	public class PlaylistsController : BaseAdministrationController<Model, ViewModel>
 	{

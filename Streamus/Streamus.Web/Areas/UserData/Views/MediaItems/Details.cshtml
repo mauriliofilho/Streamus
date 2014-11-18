@@ -1,4 +1,4 @@
-﻿@model Streamus.Data.Models.MediaItem
+﻿@model Streamus.Web.ViewModels.Shared.MediaItemViewModel
 
 @{
 	ViewBag.Title = "MediaItem Details";
@@ -32,14 +32,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Duration)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LQImageUrl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LQImageUrl)
         </dd>
 
         <dt>

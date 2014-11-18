@@ -1,8 +1,7 @@
-﻿namespace Streamus.Web.Areas.Administration.ViewModel
+﻿namespace Streamus.Web.ViewModels.Shared
 {
 	using Streamus.Data.Models;
 	using Streamus.Web.Infrastructure.Mapping;
-	using Streamus.Web.ViewModels.Shared;
 	using System.ComponentModel.DataAnnotations;
 
 	public class CollectionViewModel : BaseViewModel, IMapFrom<Collection>

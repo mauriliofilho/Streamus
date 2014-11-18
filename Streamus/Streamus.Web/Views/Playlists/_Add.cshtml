@@ -1,1 +1,49 @@
-﻿<h1 class="text-center">Playlist Add</h1>
+﻿@model Streamus.Web.InputModels.AddToPlaylistInputModel
+
+<div class="text-overflow">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel">
+				<div class="panel-heading">
+					<h5>Choose Playlist</h5>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="PlaylistId">Playlist:</label>
+								@Html.DropDownListFor(model => model.PlaylistId, Model.PlaylistOptions, new { @class = "itemid form-control" })
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							@Html.ActionLink("Add video to playlist", "AddVideo", "Playlist", null, new { @class = "item-add btn btn-success" })
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel">
+				<div class="panel-heading">
+					<h5>Create new</h5>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="NewPlaylistName">Create new:</label>
+								@Html.EditorFor(model => model.NewPlaylistName, new { @class = "form-control" })
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							@Html.ActionLink("Create Playlist and add video", "CreateAndAdd", "Playlist", null, new { @class = "create-add btn btn-primary" })
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

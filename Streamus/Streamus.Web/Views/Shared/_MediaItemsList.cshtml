@@ -19,11 +19,7 @@
 			var $videoContainer = $parent.find(".video-container");
 			var $img = $videoContainer.find("img:first");
 			if ($img.is(":visible")) {
-				var $iframe = $("<iframe>");
-				$iframe.attr("src", "//www.youtube.com/embed/" + videoId + "?autoplay=1");
-				$iframe.attr("frameborder", "0");
-				$iframe.attr("allowfullscreen", "allowfullscreen");
-				$videoContainer.append($iframe);
+				window.youtube.embed($videoContainer, videoId);
 
 				$img.hide();
 				$this.text("Stop");
@@ -65,23 +61,49 @@
 				contentUrl = "/Collections/Add";
 			}
 			else if (isMediaItemAdd) {
-				title = "Add video to media items";
-				contentUrl = "/MediaItems/Add";
+				var videoId = $this.data("id");
+				var url = "/MediaItems/Add";
+
+				var $kendoNotification = $("<div id='popup-notification'>");
+				$(document.body).append($kendoNotification);
+				var popupNotification = $kendoNotification.kendoNotification({
+					autoHideAfter: 1000,
+					hide: function () {
+						this.destroy();
+					}
+				}).data("kendoNotification");
+
+				$.post(url, { videoId: videoId }, function (res) {
+					var result = res.split(":");
+
+					if (result[0] === "OK") {
+						popupNotification.show(result[1]);
+					}
+					else {
+						popupNotification.show(result[1], "error");
+					}
+				});
+
+				return false;
 			}
 
 			var $window = $("<div id='add-form'>");
 			$(document.body).append($window);
 
 			$window.kendoWindow({
-				width: "615px",
+				width: "600px",
 				title: title,
 				content: contentUrl,
 				modal: true,
 				visible: false,
+				refresh: function () {
+					this.center();
+					this.open();
+				},
 				close: function () {
 					this.destroy();
 				}
-			}).data("kendoWindow").center().open();;
+			});
 		});
 	});
 </script>

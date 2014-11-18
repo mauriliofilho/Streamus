@@ -1,13 +1,16 @@
-﻿using Streamus.Data;
-using Streamus.Data.Models;
-using Streamus.Web.Controllers;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web.Mvc;
-
-namespace Streamus.Web.Areas.UserData.Controllers
+﻿namespace Streamus.Web.Areas.UserData.Controllers
 {
+	using AutoMapper;
+	using AutoMapper.QueryableExtensions;
+	using Streamus.Data;
+	using Streamus.Data.Models;
+	using Streamus.Web.Controllers;
+	using Streamus.Web.ViewModels.Shared;
+	using System.Data.Entity;
+	using System.Linq;
+	using System.Net;
+	using System.Web.Mvc;
+
 	public class MediaItemsController : BaseController
 	{
 		public MediaItemsController(IStreamusData data)
@@ -18,7 +21,8 @@ namespace Streamus.Web.Areas.UserData.Controllers
 		// GET: UserData/MediaItems
 		public ActionResult Index()
 		{
-			return View(this.Data.MediaItems.All().ToList());
+			var items = this.Data.MediaItems.All().Project().To<MediaItemViewModel>().ToList();
+			return View(items);
 		}
 
 		// GET: UserData/MediaItems/Details/5
@@ -33,7 +37,9 @@ namespace Streamus.Web.Areas.UserData.Controllers
 			{
 				return HttpNotFound();
 			}
-			return View(mediaItem);
+
+			var model = Mapper.Map<MediaItemViewModel>(mediaItem);
+			return View(model);
 		}
 
 		// GET: UserData/MediaItems/Create
@@ -47,7 +53,7 @@ namespace Streamus.Web.Areas.UserData.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "VideoId,Title,Duration,LQImageUrl,MQImageUrl,HQImageUrl")] MediaItem mediaItem)
+		public ActionResult Create([Bind(Include = "VideoId,Title,Duration,MQImageUrl,HQImageUrl")] MediaItem mediaItem)
 		{
 			if (ModelState.IsValid)
 			{
@@ -79,7 +85,7 @@ namespace Streamus.Web.Areas.UserData.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit([Bind(Include = "Id,VideoId,Title,Duration,LQImageUrl,MQImageUrl,HQImageUrl")] MediaItem mediaItem)
+		public ActionResult Edit([Bind(Include = "Id,VideoId,Title,Duration,MQImageUrl,HQImageUrl")] MediaItem mediaItem)
 		{
 			if (ModelState.IsValid)
 			{

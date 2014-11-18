@@ -9,9 +9,8 @@
 		cols.Bound(item => item.VideoId);
 		cols.Bound(item => item.Title);
 		cols.Bound(item => item.Duration);
-		cols.Bound(item => item.LQImageUrl);
-		cols.Bound(item => item.MQImageUrl);
-		cols.Bound(item => item.HQImageUrl);
+		cols.Bound(item => item.MQImageUrl).ClientTemplate("<img style='display: block;' width='160' height='80' src='#=MQImageUrl#' alt='' />");
+		cols.Bound(item => item.HQImageUrl).ClientTemplate("<img style='display: block;' width='160' height='80' src='#=MQImageUrl#' alt='' />");
 		cols.Command(c =>
 		{
 			c.Edit();

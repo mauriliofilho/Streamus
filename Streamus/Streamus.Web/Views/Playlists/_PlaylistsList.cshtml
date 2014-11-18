@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Streamus.Web.ViewModels.Shared.PlaylistViewModel>
+<h2 class="text-center">Playlists:</h2>
+@(Html.Kendo().ListView(Model)
+		.Name("playlistsList")
+		.TagName("div")
+		.ClientTemplateId("playlistsListTemplate")
+		.DataSource(dataSource =>
+		{
+			dataSource.Read(read => read.Action("Read", "Playlists"));
+			dataSource.PageSize(4);
+		})
+		.Pageable()
+)
+
+<script type="text/x-kendo-tmpl" id="playlistsListTemplate">
+	<div class="row top10 bottom10">
+		<div class="col-md-10">
+			<div>
+				<label style="padding-left: 20px; max-width: 190px" class="text-overflow">${Name}</label>
+				<a class="btn-playlist-load btn btn-primary btn-sm pull-right" data-id="${Id}">Load</a>
+			</div>
+		</div>
+	</div>
+</script>

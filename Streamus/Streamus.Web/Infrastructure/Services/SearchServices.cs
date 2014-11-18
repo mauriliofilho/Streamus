@@ -1,5 +1,6 @@
 ﻿namespace Streamus.Web.Infrastructure.Services
 {
+	using AutoMapper;
 	using AutoMapper.QueryableExtensions;
 	using Google.GData.YouTube;
 	using Google.YouTube;
@@ -7,6 +8,7 @@
 	using Streamus.Web.Infrastructure.Services.Base;
 	using Streamus.Web.Infrastructure.Services.Contracts;
 	using Streamus.Web.ViewModels.Shared;
+	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 
@@ -33,6 +35,15 @@
 				.AsQueryable()
 				.Project()
 				.To<MediaItemViewModel>();
+		}
+
+		public MediaItemViewModel Get(string videoId)
+		{
+			Uri videoEntryUrl = new Uri("http://gdata.youtube.com/feeds/api/videos/" + videoId);
+			var videoEntry = this.Request.Retrieve<Video>(videoEntryUrl);
+			var mediaItem = Mapper.Map<MediaItemViewModel>(videoEntry);
+
+			return mediaItem;
 		}
 	}
 }
