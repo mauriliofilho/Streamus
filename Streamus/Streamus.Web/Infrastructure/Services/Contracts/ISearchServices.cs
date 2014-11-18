@@ -3,8 +3,8 @@
 	using Streamus.Web.ViewModels.Shared;
 	using System.Collections.Generic;
 
-	public interface IHomeServices
+	public interface ISearchServices
 	{
-		IEnumerable<MediaItemViewModel> GetIndexViewModel();
+		IEnumerable<MediaItemViewModel> Search(string query);
 	}
 }

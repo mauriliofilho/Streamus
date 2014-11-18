@@ -1,0 +1,10 @@
+﻿@model Streamus.Web.ViewModels.Search.SearchViewModel
+
+@{
+	ViewBag.Title = "Search Page";
+
+	string query = (string)ViewBag.QueryString;
+	int page = (int)ViewBag.Page;
+}
+
+@Html.Action("Search", new { query = query, page = page })

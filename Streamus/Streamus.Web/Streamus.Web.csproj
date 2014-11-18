@@ -213,11 +213,11 @@
     <Compile Include="Areas\Administration\ViewModel\UserViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModel\PlaylistViewModel.cs" />
     <Compile Include="Areas\UserData\Controllers\CollectionsController.cs" />
-    <Compile Include="Areas\UserData\Controllers\MediaItemsController.cs" />
     <Compile Include="Areas\UserData\Controllers\PlaylistsController.cs" />
     <Compile Include="Areas\UserData\UserDataAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -225,6 +225,7 @@
     </Compile>
     <Compile Include="Infrastructure\Caching\ICacheService.cs" />
     <Compile Include="Infrastructure\Caching\InMemoryCache.cs" />
+    <Compile Include="Infrastructure\HtmlHelpers\FormatHelpers.cs" />
     <Compile Include="Infrastructure\HtmlHelpers\KendoHelpers.cs" />
     <Compile Include="Infrastructure\Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
@@ -232,7 +233,9 @@
     <Compile Include="Infrastructure\Populators\IDropDownListPopulator.cs" />
     <Compile Include="Infrastructure\Security\Encryption.cs" />
     <Compile Include="Infrastructure\Services\Base\BaseServices.cs" />
+    <Compile Include="Infrastructure\Services\Contracts\ISearchServices.cs" />
     <Compile Include="Infrastructure\Services\Contracts\IHomeServices.cs" />
+    <Compile Include="Infrastructure\Services\SearchServices.cs" />
     <Compile Include="Infrastructure\Services\HomeServices.cs" />
     <Compile Include="Infrastructure\Validation\DoesNotContainAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,6 +257,8 @@
     <Compile Include="ViewModels\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchViewModel.cs" />
+    <Compile Include="ViewModels\Shared\MediaItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -517,7 +522,6 @@
     <Content Include="Libraries\Google\Google.GData.Spreadsheets.dll" />
     <Content Include="Libraries\Google\Google.GData.WebmasterTools.dll" />
     <Content Include="Libraries\Google\Google.GData.YouTube.dll" />
-    <Content Include="Libraries\Google\Newtonsoft.Json.dll" />
     <Content Include="Libraries\Google\zlib.x86.dll" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
     <Content Include="Content\kendo\HighContrast\Thumbs.db" />
@@ -537,11 +541,6 @@
     <Content Include="Areas\Administration\Views\Users\Index.cshtml" />
     <Content Include="Areas\Administration\Views\MediaItems\Index.cshtml" />
     <Content Include="Areas\UserData\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\UserData\Views\MediaItems\Create.cshtml" />
-    <Content Include="Areas\UserData\Views\MediaItems\Delete.cshtml" />
-    <Content Include="Areas\UserData\Views\MediaItems\Details.cshtml" />
-    <Content Include="Areas\UserData\Views\MediaItems\Edit.cshtml" />
-    <Content Include="Areas\UserData\Views\MediaItems\Index.cshtml" />
     <Content Include="Areas\UserData\Views\Playlists\Create.cshtml" />
     <Content Include="Areas\UserData\Views\Playlists\Delete.cshtml" />
     <Content Include="Areas\UserData\Views\Playlists\Details.cshtml" />
@@ -1216,7 +1215,10 @@
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
-    <Content Include="Views\Home\_MostPopular.cshtml" />
+    <Content Include="Views\Shared\_MediaItemsList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MediaItemViewModel.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\_PageableSearchResult.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -65,12 +65,18 @@ namespace Streamus.Web.App_Start
 		/// <param name="kernel">The kernel.</param>
 		private static void RegisterServices(IKernel kernel)
 		{
+			// Database
 			kernel.Bind<DbContext>().To<StreamusDbContext>();
 			kernel.Bind<IStreamusData>().To<StreamusData>();
 
+			// Caching
 			kernel.Bind<ICacheService>().To<InMemoryCache>();
 
+			// Services
 			kernel.Bind<IHomeServices>().To<HomeServices>();
+			kernel.Bind<ISearchServices>().To<SearchServices>();
+
+			// Populators
 			kernel.Bind<IDropDownListPopulator>().To<DropDownListPopulator>();
 		}
 	}

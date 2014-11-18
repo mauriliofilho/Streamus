@@ -40,14 +40,6 @@
 			}
 		}
 
-		public IRepository<MediaItemThumbnail> MediaItemThumbnails
-		{
-			get
-			{
-				return this.GetRepository<MediaItemThumbnail>();
-			}
-		}
-
 		public IRepository<User> Users
 		{
 			get

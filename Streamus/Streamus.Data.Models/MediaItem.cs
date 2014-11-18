@@ -2,7 +2,6 @@ namespace Streamus.Data.Models
 {
 	using System.Collections.Generic;
 	using System.ComponentModel.DataAnnotations;
-	using System.ComponentModel.DataAnnotations.Schema;
 
 	public partial class MediaItem : BaseItem
 	{
@@ -14,23 +13,24 @@ namespace Streamus.Data.Models
 		}
 
 		[Required]
-		[StringLength(500)]
-		public string Link { get; set; }
+		[StringLength(50)]
+		public string VideoId { get; set; }
 
 		[Required]
 		[StringLength(250)]
-		public string Name { get; set; }
+		public string Title { get; set; }
 
 		[Required]
-		[StringLength(250)]
-		public string Duration { get; set; }
+		public long Duration { get; set; }
 
 		[Required]
-		[ForeignKey("Thumbnail")]
-		public string ThumbnailId { get; set; }
+		public string LQImageUrl { get; set; }
 
 		[Required]
-		public virtual MediaItemThumbnail Thumbnail { get; set; }
+		public string MQImageUrl { get; set; }
+
+		[Required]
+		public string HQImageUrl { get; set; }
 
 		public virtual ICollection<Collection> Collections { get; set; }
 

@@ -20,10 +20,10 @@ namespace Streamus.Web.Controllers
 		}
 
 		[ChildActionOnly]
-		//[OutputCache(Duration = 0)]
+		[OutputCache(Duration = 1)]
 		public ActionResult MostPopular()
 		{
-			return PartialView("_MostPopular", this.homeServices.GetIndexViewModel());
+			return PartialView("_MediaItemsList", this.homeServices.GetIndexViewModel());
 		}
 	}
 }

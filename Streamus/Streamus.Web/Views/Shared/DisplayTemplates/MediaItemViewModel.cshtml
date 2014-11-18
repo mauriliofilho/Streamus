@@ -1,0 +1,52 @@
+﻿@model Streamus.Web.ViewModels.Shared.MediaItemViewModel
+
+@{
+	var mediaItem = Model;
+}
+
+<div class="panel">
+	<div class="panel-heading">
+		<h3 class="text-overflow">
+			@mediaItem.Title
+		</h3>
+		<h6>
+			<span class="label label-default">Duration: @Html.FormatPeriodFromSeconds(mediaItem.Duration)</span>
+		</h6>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="video-container">
+					<img src="@mediaItem.LQImageUrl" />
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-offset-1">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="row top15">
+									<a href="#" class="listen btn btn-sm btn-primary" data-id="@mediaItem.VideoId">Play</a>
+								</div>
+								<div class="row top15">
+									<a href="@mediaItem.VideoUrl" target="_blank" class="listen-youtube btn btn-sm btn-default">Listen in YouTube</a>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row top15">
+									@Html.ActionLink("Add to playlist", "Add", "Playlists", new { area = "UserData" }, new { @class = "btn btn-success btn-sm" })
+								</div>
+								<div class="row top15">
+									@Html.ActionLink("Add to collection", "Add", "Collections", new { area = "UserData" }, new { @class = "btn btn-success btn-sm" })
+								</div>
+								<div class="row top15">
+									@Html.ActionLink("Add to media items", "Add", "MediaItems", new { area = "UserData" }, new { @class = "btn btn-success btn-sm" })
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

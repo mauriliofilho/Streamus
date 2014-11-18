@@ -17,8 +17,6 @@ namespace Streamus.Data
 
 		public virtual DbSet<MediaItem> MediaItems { get; set; }
 
-		public virtual DbSet<MediaItemThumbnail> MediaItemThumbnails { get; set; }
-
 		public virtual DbSet<Playlist> Playlists { get; set; }
 
 		public static StreamusDbContext Create()
@@ -44,16 +42,6 @@ namespace Streamus.Data
 				.HasMany(e => e.Playlists)
 				.WithMany(e => e.MediaItems)
 				.Map(m => m.ToTable("PlaylistsMediaItems").MapLeftKey("MediaItemId").MapRightKey("PlaylistId"));
-
-			modelBuilder.Entity<MediaItemThumbnail>()
-				.Property(e => e.Type)
-				.IsUnicode(false);
-
-			modelBuilder.Entity<MediaItemThumbnail>()
-				.HasMany(e => e.MediaItems)
-				.WithRequired(e => e.Thumbnail)
-				.HasForeignKey(e => e.ThumbnailId)
-				.WillCascadeOnDelete(false);
 		}
 	}
 }

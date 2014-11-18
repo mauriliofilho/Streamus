@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Streamus.Web.ViewModels.Shared.MediaItemViewModel>
+
+@foreach (var mediaItem in Model)
+{
+	<div class="row">
+		<div class="col-md-12">
+			@Html.DisplayFor(item => mediaItem)
+		</div>
+	</div>
+}
+
+<script>
+	$(function () {
+		var embedPlayer = function (evt) {
+			var $this = $(this);
+			var videoId = $this.data("id");
+
+			var $parent = $this.parents(".panel-body:first");
+			var $videoContainer = $parent.find(".video-container");
+			var $img = $videoContainer.find("img:first");
+			if ($img.is(":visible")) {
+				var $iframe = $("<iframe>");
+				$iframe.attr("src", "//www.youtube.com/embed/" + videoId + "?autoplay=1");
+				$iframe.attr("frameborder", "0");
+				$iframe.attr("allowfullscreen", "allowfullscreen");
+				$videoContainer.append($iframe);
+
+				$img.hide();
+				$this.text("Stop");
+				$this.removeClass("btn-primary");
+				$this.addClass("btn-danger");
+			}
+			else {
+				$videoContainer.find("iframe:first").remove();
+				$img.show();
+				$this.text("Play");
+				$this.removeClass("btn-danger");
+				$this.addClass("btn-primary");
+			}
+
+			if (evt.preventDefault) {
+				evt.preventDefault();
+			}
+
+			return false;
+		};
+
+		$(".listen").click(embedPlayer);
+	});
+</script>

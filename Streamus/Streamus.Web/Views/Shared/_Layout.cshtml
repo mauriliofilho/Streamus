@@ -20,7 +20,7 @@
 	<script src="http://jwpsrv.com/library/9DAYzm2+EeS3RhLddj37mA.js"></script>
 </head>
 <body>
-	<div class="navbar navbar-static-top">
+	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,11 +32,19 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
+					<li>@Html.ActionLink("Search", "Index", "Search", new { area = string.Empty }, null)</li>
 					@if (User.Identity.IsAuthenticated)
 					{
-						<li>@Html.ActionLink("Playlists", "Index", "Playlists", new { area = "UserData" }, null)</li>
-						<li>@Html.ActionLink("Collections", "Index", "Collections", new { area = "UserData" }, null)</li>
-						<li>@Html.ActionLink("Media Items", "Index", "MediaItems", new { area = "UserData" }, null)</li>
+						<li>@Html.ActionLink("Player", "Index", "Player", new { area = string.Empty }, null)</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manage <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li>@Html.ActionLink("Playlists", "Index", "Playlists", new { area = "UserData" }, null)</li>
+								<li>@Html.ActionLink("Collections", "Index", "Collections", new { area = "UserData" }, null)</li>
+								<li>@Html.ActionLink("Media Items", "Index", "MediaItems", new { area = "UserData" }, null)</li>
+							</ul>
+						</li>
 
 						if (User.IsInRole(AppRoles.Admin))
 						{

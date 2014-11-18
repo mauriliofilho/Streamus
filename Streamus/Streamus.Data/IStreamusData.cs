@@ -13,8 +13,6 @@
 
 		IRepository<MediaItem> MediaItems { get; }
 
-		IRepository<MediaItemThumbnail> MediaItemThumbnails { get; }
-
 		IRepository<User> Users { get; }
 
 		void Dispose();

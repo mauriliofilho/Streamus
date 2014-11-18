@@ -58,7 +58,6 @@
     <Compile Include="Collection.cs" />
     <Compile Include="IBaseItem.cs" />
     <Compile Include="MediaItem.cs" />
-    <Compile Include="MediaItemThumbnail.cs" />
     <Compile Include="Playlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
