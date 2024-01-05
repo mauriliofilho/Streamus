@@ -46,7 +46,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [mauriliofilho/Streamus](https://github.com/mauriliofilho/Streamus)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|43<br/>Tools used|11/30/23 <br/>Report generated|
+|43<br/>Tools used|01/05/24 <br/>Report generated|
 |------|------|
 </div>
 
